@@ -9,10 +9,16 @@ const port = process.env.PORT || 3000
 app.use(cors())
 app.use(express.json())
 
-const uri = process.env.ATLAS_URI
+// Set strictQuery to false to prepare for Mongoose 7
+mongoose.set('strictQuery', false)
+
+const uri = process.env.ATLAS_URI || 'mongodb://localhost:27017/social-media-platform'
 mongoose.connect(
   uri,
-  { useNewUrlParser: true } //useCreateIndex: true }
+  { 
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }
 )
 const connection = mongoose.connection
 connection.once('open', () => {

@@ -6,7 +6,6 @@ const { ValidatorsImpl } = require("express-validator/src/chain");
 const res = require("express/lib/response");
 const fetchuser = require("../middleware/Fetchuser.js");
 
-
 router.get(
   "/", fetchuser ,
   //validating input got by server, if input is in correct format, then user is created.
